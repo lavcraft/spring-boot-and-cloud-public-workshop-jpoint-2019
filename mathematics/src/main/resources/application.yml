@@ -1,0 +1,4 @@
+max: 5
+
+server:
+  port: 8081

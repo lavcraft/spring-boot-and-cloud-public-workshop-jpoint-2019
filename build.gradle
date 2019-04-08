@@ -1,0 +1,45 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.4.RELEASE' apply false
+}
+
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    sourceCompatibility = '11'
+
+    dependencies {
+        [ //dependency management
+          enforcedPlatform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES),
+          platform('org.junit:junit-bom:5.4.1'),
+        ].each {
+            implementation it
+            annotationProcessor it
+            testAnnotationProcessor it
+        }
+
+        ['org.projectlombok:lombok',
+         'org.springframework.boot:spring-boot-configuration-processor'
+        ].each {
+            compileOnly it
+            testCompileOnly it
+            annotationProcessor it
+            testAnnotationProcessor it
+        }
+
+        implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+        testImplementation 'org.springframework.boot:spring-boot-starter-test',
+                'org.mockito:mockito-junit-jupiter',
+                'org.junit.jupiter:junit-jupiter-engine'
+    }
+}

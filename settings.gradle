@@ -1,0 +1,17 @@
+pluginManagement {
+	repositories {
+		gradlePluginPortal()
+	}
+}
+
+rootProject.name = 'spring-boot-and-cloud-workshop-jpoint2019'
+
+fileTree('.') {
+	include '**/build.gradle'
+	exclude 'build.gradle'
+}.collect {
+	relativePath(it.parent).replace(File.separator, ':')
+}.each {
+	include it
+}
+

@@ -1,0 +1,38 @@
+POST http://localhost:8080/exam
+Content-Type: application/json
+
+{}
+
+###
+
+GET http://localhost:8081/random?amount=32
+Content-Type: application/json
+
+{}
+
+###
+
+GET http://localhost:8082/random?amount=2
+Content-Type: application/json
+
+{}
+
+###
+
+
+GET http://localhost:8082
+Content-Type: application/json
+
+{}
+
+###
+
+POST http://localhost:8082/exerciseDToes
+Content-Type: application/json
+
+{
+  "question": "Какая последняя джава",
+  "answer": "12"
+}
+
+###
