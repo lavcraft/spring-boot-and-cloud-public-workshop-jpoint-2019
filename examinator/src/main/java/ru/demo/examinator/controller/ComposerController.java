@@ -1,7 +1,9 @@
 package ru.demo.examinator.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,19 +19,13 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
-@RequiredArgsConstructor
 public class ComposerController {
-    private final RestTemplate restTemplate;
+    @Autowired
+    @LoadBalanced
+    private  RestTemplate restTemplate;
 
-    private Map<String, String> seviceUrlByName = new HashMap<>();
-
-    private DiscoveryClient discoveryClient;
-
-    @PostConstruct
-    public void init() {
-        seviceUrlByName.put("math", "http://localhost:8081/random");
-        seviceUrlByName.put("java", "http://localhost:8082/random");
-    }
+    @Autowired
+    private RestTemplate restTemplateWithoutMagic;
 
     @PostMapping("/exam")
     public Exam getExam(@RequestBody Map<String, Integer> sections) {
@@ -39,9 +35,9 @@ public class ComposerController {
                         .map(entry -> {
                             String sectionName = entry.getKey();
                             int    amount      = entry.getValue();
-                            String serviceUrl  = seviceUrlByName.get(sectionName);
+
                             Exercise[] forObject = restTemplate.getForObject(
-                                    serviceUrl + "?amount=" + amount,
+                                    "http://"+sectionName + "/random?amount=" + amount,
                                     Exercise[].class
                             );
 
