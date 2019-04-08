@@ -1,3 +1,11 @@
+POST http://localhost:8080/actuator/refresh
+
+###
+
+GET http://localhost:8080/a
+
+###
+
 POST http://localhost:8080/exam
 Content-Type: application/json
 

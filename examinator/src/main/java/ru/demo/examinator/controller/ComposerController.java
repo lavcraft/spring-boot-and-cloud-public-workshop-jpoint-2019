@@ -3,6 +3,8 @@ package ru.demo.examinator.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,10 +18,15 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
+@RefreshScope
 public class ComposerController {
     @Value("${foo.bar}")
     String a;
 
+    @GetMapping("/a")
+    public String aaa() {
+        return a;
+    }
     @Autowired
     @LoadBalanced
     private  RestTemplate restTemplate;

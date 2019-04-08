@@ -21,6 +21,7 @@ subprojects {
         [ //dependency management
           enforcedPlatform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES),
           platform('org.springframework.cloud:spring-cloud-dependencies:Greenwich.RELEASE'),
+          platform('org.springframework.cloud:spring-cloud-bus:2.1.1.RELEASE'),
           platform('org.junit:junit-bom:5.4.1'),
         ].each {
             implementation it
@@ -55,5 +56,6 @@ configure([
         implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
         implementation 'org.springframework.boot:spring-boot-starter-actuator'
         implementation 'org.springframework.cloud:spring-cloud-starter-config'
+        implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'
     }
 }
