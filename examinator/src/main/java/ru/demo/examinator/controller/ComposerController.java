@@ -1,8 +1,7 @@
 package ru.demo.examinator.controller;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,14 +11,15 @@ import ru.demo.Exam;
 import ru.demo.Exercise;
 import ru.demo.Section;
 
-import javax.annotation.PostConstruct;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
 public class ComposerController {
+    @Value("${foo.bar}")
+    String a;
+
     @Autowired
     @LoadBalanced
     private  RestTemplate restTemplate;
