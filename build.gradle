@@ -15,11 +15,12 @@ allprojects {
 subprojects {
     apply plugin: 'java'
 
-    sourceCompatibility = '11'
+    sourceCompatibility = '1.8'
 
     dependencies {
         [ //dependency management
           enforcedPlatform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES),
+          platform('org.springframework.cloud:spring-cloud-dependencies:Greenwich.RELEASE'),
           platform('org.junit:junit-bom:5.4.1'),
         ].each {
             implementation it
@@ -36,7 +37,9 @@ subprojects {
             testAnnotationProcessor it
         }
 
-        implementation 'org.springframework.boot:spring-boot-starter-webflux'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+
+        implementation  'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
         testImplementation 'org.springframework.boot:spring-boot-starter-test',
                 'org.mockito:mockito-junit-jupiter',
