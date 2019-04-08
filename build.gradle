@@ -39,10 +39,18 @@ subprojects {
 
         implementation 'org.springframework.boot:spring-boot-starter-web'
 
-        implementation  'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-
         testImplementation 'org.springframework.boot:spring-boot-starter-test',
                 'org.mockito:mockito-junit-jupiter',
                 'org.junit.jupiter:junit-jupiter-engine'
+    }
+}
+
+configure([
+        project(':examinator'),
+        project(':mathematics'),
+        project(':java')
+]) {
+    dependencies {
+        implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     }
 }
