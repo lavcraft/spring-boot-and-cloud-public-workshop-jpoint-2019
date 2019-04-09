@@ -1,0 +1,5 @@
+server:
+  port: 7777
+
+spring:
+  cloud.gateway.discovery.locator.enabled: true

@@ -60,3 +60,16 @@ X-Forwarded-Path: /two/one
 
 
 ###
+
+GET http://localhost:7777/EXAMINATOR/a
+
+###
+
+
+GET http://localhost:7777/JAVA/random?amount=1
+
+###
+
+GET http://localhost:7777/MATH/random?amount=5
+
+###

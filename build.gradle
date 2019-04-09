@@ -38,8 +38,6 @@ subprojects {
             testAnnotationProcessor it
         }
 
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-
         testImplementation 'org.springframework.boot:spring-boot-starter-test',
                 'org.mockito:mockito-junit-jupiter',
                 'org.junit.jupiter:junit-jupiter-engine'
@@ -51,12 +49,15 @@ configure([
         project(':mathematics'),
         project(':java'),
         project(':config-server'),
+        project(':gateway'),
+        project(':discovery-server'),
 ]) {
     dependencies {
-        implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-        implementation 'org.springframework.boot:spring-boot-starter-actuator'
-        implementation 'org.springframework.cloud:spring-cloud-starter-config'
-        implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'
-        implementation 'org.springframework.boot:spring-boot-starter-amqp'
+        implementation 'org.springframework.boot:spring-boot-starter-webflux',
+                'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client',
+                'org.springframework.boot:spring-boot-starter-actuator',
+                'org.springframework.cloud:spring-cloud-starter-config',
+                'org.springframework.cloud:spring-cloud-starter-bus-amqp',
+                'org.springframework.boot:spring-boot-starter-amqp'
     }
 }
