@@ -1,3 +1,7 @@
+POST http://localhost:53064/actuator/bus-refresh
+
+###
+
 POST http://localhost:8080/actuator/refresh
 
 ###
@@ -45,5 +49,14 @@ Content-Type: application/json
   "question": "Какая последняя джава",
   "answer": "12"
 }
+
+###
+
+
+
+GET http://localhost:8082/one
+HOST: yyaya.ru
+X-Forwarded-Path: /two/one
+
 
 ###

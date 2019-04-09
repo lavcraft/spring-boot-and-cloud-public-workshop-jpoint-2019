@@ -1,2 +1,8 @@
 server:
-  port: 9999
+  port: 0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:  '*'
